@@ -111,6 +111,11 @@ variable "port" {
   type        = string
 }
 
+variable "vpc_id" {
+  description = "ID of VPC meant to house database"
+  type        = string
+}
+
 variable "vpc_security_group_ids" {
   description = "List of VPC security groups to associate"
   type        = list(string)
