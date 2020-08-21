@@ -9,6 +9,6 @@ locals {
 
   security_group_ids = concat(
     var.vpc_security_group_ids,
-    aws_security_group.this.id,
+    [aws_security_group.this.id],
   )
 }
