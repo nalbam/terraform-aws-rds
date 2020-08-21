@@ -1,6 +1,7 @@
 # security_group
 
 resource "aws_security_group" "this" {
+  name        = var.identifier
   description = format("Database security group for %s", var.identifier)
 
   vpc_id = var.vpc_id
