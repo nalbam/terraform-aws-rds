@@ -26,7 +26,7 @@ resource "aws_db_instance" "this" {
 
   snapshot_identifier = var.snapshot_identifier
 
-  vpc_security_group_ids = var.vpc_security_group_ids
+  vpc_security_group_ids = local.security_group_ids
 
   db_subnet_group_name   = aws_db_subnet_group.this.id
   parameter_group_name   = aws_db_parameter_group.this.id

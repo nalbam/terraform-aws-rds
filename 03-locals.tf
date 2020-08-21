@@ -6,4 +6,9 @@ locals {
 
 locals {
   name_prefix = "${var.identifier}-"
+
+  security_group_ids = concat(
+    var.vpc_security_group_ids,
+    aws_security_group.this.id,
+  )
 }
