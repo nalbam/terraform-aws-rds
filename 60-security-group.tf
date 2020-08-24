@@ -22,11 +22,21 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "self" {
-  description              = "Allow worker to communicate with each other"
+  description              = "Allow connect to communicate with each other"
   security_group_id        = aws_security_group.this.id
   source_security_group_id = aws_security_group.this.id
   from_port                = var.port
   to_port                  = var.port
   protocol                 = "-1"
   type                     = "ingress"
+}
+
+resource "aws_security_group_rule" "allow_ip" {
+  description       = "Allow connect to communicate with the ip address"
+  security_group_id = aws_security_group.this.id
+  cidr_blocks       = var.allow_ip_address
+  from_port         = var.port
+  to_port           = var.port
+  protocol          = "tcp"
+  type              = "ingress"
 }

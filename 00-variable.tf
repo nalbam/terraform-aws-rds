@@ -240,6 +240,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "allow_ip_address" {
+  description = "List of IP Address to permit access."
+  type        = list(string)
+  default     = []
+}
+
 # DB subnet group
 
 variable "subnet_ids" {
