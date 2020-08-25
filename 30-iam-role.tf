@@ -1,4 +1,4 @@
-# iam
+# iam role
 
 data "aws_iam_policy_document" "enhanced_monitoring" {
   statement {
@@ -14,21 +14,22 @@ data "aws_iam_policy_document" "enhanced_monitoring" {
 }
 
 resource "aws_iam_role" "enhanced_monitoring" {
-  count = var.create_monitoring_role ? 1 : 0
+  count = var.monitoring_interval > 0 ? 1 : 0
 
-  name               = var.monitoring_role_name
+  name = "${var.identifier}-role"
+
   assume_role_policy = data.aws_iam_policy_document.enhanced_monitoring.json
 
   tags = merge(
     {
-      "Name" = format("%s", var.monitoring_role_name)
+      "Name" = format("%s", var.identifier)
     },
     var.tags,
   )
 }
 
 resource "aws_iam_role_policy_attachment" "enhanced_monitoring" {
-  count = var.create_monitoring_role ? 1 : 0
+  count = var.monitoring_interval > 0 ? 1 : 0
 
   role       = aws_iam_role.enhanced_monitoring[0].name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole"
