@@ -39,6 +39,6 @@ resource "aws_security_group_rule" "allow_ip" {
   # to_port           = var.port
   from_port         = 0
   to_port           = 65535
-  protocol          = "tcp"
+  protocol          = "-1"
   type              = "ingress"
 }
