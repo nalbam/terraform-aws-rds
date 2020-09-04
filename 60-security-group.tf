@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "self" {
   type                     = "ingress"
 }
 
-resource "aws_security_group_rule" "allow_ip" {
+resource "aws_security_group_rule" "allow_ip_address" {
   description       = "Allow connect to communicate with the ip address"
   security_group_id = aws_security_group.this.id
   cidr_blocks       = var.allow_ip_address
