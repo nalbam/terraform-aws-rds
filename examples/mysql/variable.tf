@@ -5,13 +5,13 @@ variable "region" {
 }
 
 variable "name" {
-  default = "db-demo-postgres"
+  default = "db-demo-mysql"
 }
 
 variable "engine" {
   description = "Database engine"
   type        = string
-  default     = "postgres"
+  default     = "mysql"
 }
 
 variable "engine_version" {
@@ -29,19 +29,19 @@ variable "instance_type" {
 variable "database_name" {
   description = "Name of database inside storage engine"
   type        = string
-  default     = "postgres"
+  default     = "mysql"
 }
 
 variable "database_username" {
   description = "Name of user inside storage engine"
   type        = string
-  default     = "postgres"
+  default     = "mysql"
 }
 
 variable "database_password" {
   description = "Database password inside storage engine"
   type        = string
-  default     = "postgres"
+  default     = "mysql"
 }
 
 variable "database_port" {
@@ -68,7 +68,7 @@ variable "subnet_ids" {
 variable "family" {
   description = "The family of the DB parameter group"
   type        = string
-  default     = "postgres12"
+  default     = "mysql12"
 }
 
 # DB option group
